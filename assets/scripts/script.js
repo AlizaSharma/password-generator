@@ -12,18 +12,6 @@ var avaliableCharacters = [];
 var newPassword = "";
 
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-  return;
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
 function generatePassword() {
 
   var passwordLength = prompt("How long would you like your password to be?");
@@ -61,9 +49,42 @@ function generatePassword() {
     avaliableCharacters.push(speicalCharacters);
   }
 
+// selected groups 
+  if (hasLowercase) {
+    possibleCharacters = possibleCharacters.concat(lowercaseCharacters);
+  }
+  if (hasUppercase) {
+    possibleCharacters = possibleCharacters.concat(uppercaseCharacters);
+  }
+  if (hasNumbers) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+  }
+  if (hasSpecial) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+  }
+
   // dependant on the USER ENTERD CHOICES we make logic decisions;
   
-  var data = "password";
+  let newPassword = ""
+  for (let i = 0; i < numbers; i++) {
+    let rng =[Math.floor(Math.random() * possibleCharacters.length)];
 
-  return data;
+// or finalPassword += possibleCharacters[rng];
+    finalPassword = finalPassword + possibleCharacters[rng];
+  }
+  return finalPassword;
+
 }
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+  return;
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
