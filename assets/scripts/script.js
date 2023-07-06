@@ -21,30 +21,44 @@ function writePassword() {
   return;
 }
 
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-// element that we grabbed reference to
-// the method that adds an EVENT to listent for (BROWSER EVENTS)
 
 function generatePassword() {
 
   var passwordLength = prompt("How long would you like your password to be?");
-  console.log("User Enterd: ", passwordLength);
+  console.log("User Entered: ", passwordLength);
   console.log("type: ", typeof passwordLength);
 
   // when we get data lets first validate that input
   if(passwordLength <= 8 || passwordLength > 128) {
-    alert("Password lengthd musgt be between ....")
+    alert("Password length must be between 8 and 128 chatacters")
     return;
   }
   
   var addLower = confirm("would you like to use lower case character in your password?");
-  console.log("User Enterd: ", addLower);
+  console.log("User Entered: ", addLower);
   console.log("type: ", typeof addLower);
 
   if(addLower == true) {
     avaliableCharacters.push(lower);
+
+  }
+
+  var addUpper = confirm("would you like to use upper case character in your password?");
+  console.log("User Entered: ", addUpper);
+  console.log("type: ", typeof addUpper)
+  
+  if(addUpper == true) {
+    avaliableCharacters.push(upper);
+  }
+
+  var addspecialCharacters = confirm("would you like to use special characters in your password?");
+  console.log("User Entered: ", addspecialCharacters);
+  console.log("type: ", typeof addspecialCharacters)
+  
+  if(addspecialCharacters == true) {
+    avaliableCharacters.push(speicalCharacters);
   }
 
   // dependant on the USER ENTERD CHOICES we make logic decisions;
